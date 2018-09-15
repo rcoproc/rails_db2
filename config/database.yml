@@ -1,0 +1,39 @@
+sqlite: &sqlite
+  adapter: sqlite3
+  database: db/rails_db.sqlite3
+
+mysql: &mysql
+  adapter: mysql2
+  username: root
+  password:
+  database: rails_db
+
+postgresql: &postgresql
+  adapter: postgresql
+  username: postgres
+  password:
+  database: rails_db
+  min_messages: ERROR
+
+defaults: &defaults
+  pool: 5
+  timeout: 5000
+  host: localhost
+  <<: *<%= ENV['DB'] || "postgresql" %>
+
+unico:
+  <<: *default
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  port: <%= ENV['RDS_PORT'] %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
