@@ -33,7 +33,7 @@
       </li>
       <li>|</li>
       <li>
-        <%= link_to '../../' do %>
+        <%= link_to '../../visitors' do %>
           <%= fa_icon 'circle' %>
           ERP
         <% end %>
@@ -42,7 +42,7 @@
     <% if defined?  main_app.root_url %>
     <ul class="inline-list right main_nav">
       <li>
-        <%= link_to main_app.visitors_url do %>
+        <%= link_to main_app.root_url do %>
           <%= fa_icon 'home' %>
           Home
         <% end %>
